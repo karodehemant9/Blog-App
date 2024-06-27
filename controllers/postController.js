@@ -47,13 +47,17 @@ const createPost = async (req, res, next) => {
     const [postInsertResult] = await connection.query(insertPostSql, post);
     const postId = postInsertResult.insertId;
 
+
     const placeholders = tags.map(() => "?").join(", ");
     const query = `SELECT id FROM tag WHERE tag_name IN (${placeholders})`;
     const [ids] = await connection.execute(query, tags);
 
+    console.log("hiii");
     const tagIds = ids.map((tag) => tag.id);
     const postTagValues = tagIds.map((tagId) => [postId, tagId]);
+    console.log(postTagValues);
     const insertPostTagsSql = "INSERT INTO post_tag (post_id, tag_id) VALUES ?";
+    console.log(insertPostTagsSql);
     await connection.query(insertPostTagsSql, [postTagValues]);
 
     await connection.commit();

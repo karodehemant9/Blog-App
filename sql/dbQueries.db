@@ -1,3 +1,7 @@
+CREATE DATABASE blog_app;
+
+use blog_app;
+
 CREATE TABLE `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
@@ -28,3 +32,16 @@ CREATE TABLE post_tag (
     FOREIGN KEY (post_id) REFERENCES post(id),
     FOREIGN KEY (tag_id) REFERENCES tag(id)
 );
+
+
+
+INSERT INTO tag (tag_name) VALUES
+    ('Technology'),
+    ('Health and Wellness'),
+    ('Finance'),
+    ('Travel and Tourism'),
+    ('Food'),
+    ('Fashion'),
+    ('Sports'),
+    ('Fitness'),
+    ('History');
