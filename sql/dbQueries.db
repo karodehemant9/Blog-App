@@ -1,0 +1,30 @@
+CREATE TABLE `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `tag` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `tag_name` VARCHAR(255) NOT NULL UNIQUE,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `post` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(255) NOT NULL,
+    `content` TEXT NOT NULL,
+    `userId` INT NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+  );
+
+CREATE TABLE post_tag (
+    post_id INT,
+    tag_id INT,
+    PRIMARY KEY (post_id, tag_id),
+    FOREIGN KEY (post_id) REFERENCES post(id),
+    FOREIGN KEY (tag_id) REFERENCES tag(id)
+);
