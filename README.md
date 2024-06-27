@@ -122,4 +122,12 @@ Using the run collection option. It will automatically run tests for all the API
 
 
 
+## Misc
+
+### Schema Design
+![Schema Design](sql/Schema.png "Schema Design")
+
+### Postman
+![Postman](test/postman.png "Postman testing")
+
 
